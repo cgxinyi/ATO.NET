@@ -20,7 +20,6 @@ namespace ATO.net.Controllers.api
         public List<Employee> Post([FromBody] List<Employee> employee)
         {
             return this.empService.InsertEmployee(employee);
-
         }
 
     }
