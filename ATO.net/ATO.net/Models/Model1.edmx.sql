@@ -45,7 +45,7 @@ CREATE TABLE [dbo].[EmployeeSet] (
     [employeeId] int IDENTITY(1,1) NOT NULL,
     [firstName] nvarchar(max)  NOT NULL,
     [lastName] nvarchar(max)  NOT NULL,
-    [annualSalary] numeric  NOT NULL,
+    [annualSalary] double  precision,
     [superRate] int  NOT NULL,
     [paymentMonth] int  NOT NULL
 );
@@ -56,10 +56,10 @@ CREATE TABLE [dbo].[PayslipSet] (
     [payslipId] int IDENTITY(1,1) NOT NULL,
     [fromDate] nvarchar(max)  NOT NULL,
     [toDate] nvarchar(max)  NOT NULL,
-    [incomeTax] numeric  NOT NULL,
-    [netIncome] numeric  NOT NULL,
-    [superAmount] numeric  NOT NULL,
-    [grossIncome] numeric NOT NULL,
+    [incomeTax] double  precision,
+    [netIncome] double  precision,
+    [superAmount] double  precision,
+    [grossIncome] double  precision,
     [Employee_employeeId] int  NOT NULL
 );
 GO
@@ -67,9 +67,9 @@ GO
 -- Creating table 'TaxthresholdSet'
 CREATE TABLE [dbo].[TaxthresholdSet] (
     [taxthresholdId] int IDENTITY(1,1) NOT NULL,
-    [taxMin] numeric NOT NULL,
-    [taxCent] numeric  NOT NULL,
-    [taxLump] numeric  NOT NULL
+    [taxMin] double  precision,
+    [taxCent] double  precision,
+    [taxLump] double  precision
 );
 GO
 

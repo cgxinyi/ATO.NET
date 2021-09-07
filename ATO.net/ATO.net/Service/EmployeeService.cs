@@ -11,10 +11,11 @@ using System.Web;
 
 namespace ATO.net.Service
 {
-    public class EmployeeService
-    {
-        private List<Taxthreshold> taxthresholds = new List<Taxthreshold>();
+	public class EmployeeService
+	{
+		private List<Taxthreshold> taxthresholds = new List<Taxthreshold>();
 		private EmployeeRepository employeeRepository = new EmployeeRepository();
+		
 
 		public List<Taxthreshold> LoadTaxthreshold()
         {
@@ -51,6 +52,7 @@ namespace ATO.net.Service
 				if (grossIncome-(taxthresholds[i].taxMin) > 0 && count==0)
 				{
 					incomeTax = taxthresholds[i].taxLump + ((grossIncome - taxthresholds[i].taxMin)*taxthresholds[i].taxCent);
+					Debug.WriteLine("fdgsgf"+ taxthresholds[i].taxCent);
 					count=1;
 				}
 			}
