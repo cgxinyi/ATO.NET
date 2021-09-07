@@ -1,0 +1,28 @@
+﻿[
+  {
+    "taxMin": 0,
+    "taxCent": 0,
+    "taxLump": 0
+  },
+  {
+    "taxMin": 18200,
+    "taxCent": 0.19,
+    "taxLump": 0
+  },
+  {
+    "taxMin": 37000,
+    "taxCent": 0.325,
+    "taxLump": 3572
+  },
+  {
+    "taxMin": 87000,
+    "taxCent": 0.37,
+    "taxLump": 19822
+  },
+  {
+    "taxMin": 180000,
+    "taxCent": 0.45,
+    "taxLump": 54232
+  }
+
+]

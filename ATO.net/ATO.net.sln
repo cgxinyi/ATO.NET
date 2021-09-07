@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATO.net", "ATO.net\ATO.net.csproj", "{E26E0BDD-2539-4DA7-8D0D-143B6330747B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATO.net.Tests", "ATO.net.Tests\ATO.net.Tests.csproj", "{A6D3AAC9-0EFC-4CE3-AFCC-0972E3AE99FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E26E0BDD-2539-4DA7-8D0D-143B6330747B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E26E0BDD-2539-4DA7-8D0D-143B6330747B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E26E0BDD-2539-4DA7-8D0D-143B6330747B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E26E0BDD-2539-4DA7-8D0D-143B6330747B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D3AAC9-0EFC-4CE3-AFCC-0972E3AE99FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D3AAC9-0EFC-4CE3-AFCC-0972E3AE99FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D3AAC9-0EFC-4CE3-AFCC-0972E3AE99FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D3AAC9-0EFC-4CE3-AFCC-0972E3AE99FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A56E8EEF-63C8-4E42-A3EB-813B4E32F9C5}
+	EndGlobalSection
+EndGlobal

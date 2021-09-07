@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="EmployeeSet" EntityType="Model1.Store.EmployeeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PayslipSet" EntityType="Model1.Store.PayslipSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TaxthresholdSet" EntityType="Model1.Store.TaxthresholdSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="EmployeePayslip" Association="Model1.Store.EmployeePayslip">
+      <End Role="Employee" EntitySet="EmployeeSet" />
+      <End Role="Payslip" EntitySet="PayslipSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="EmployeeSet">
+    <Key>
+      <PropertyRef Name="employeeId" />
+    </Key>
+    <Property Name="employeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="annualSalary" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="superRate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="paymentMonth" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PayslipSet">
+    <Key>
+      <PropertyRef Name="payslipId" />
+    </Key>
+    <Property Name="payslipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fromDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="toDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="incomeTax" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="netIncome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="superAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="grossIncome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_employeeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaxthresholdSet">
+    <Key>
+      <PropertyRef Name="taxthresholdId" />
+    </Key>
+    <Property Name="taxthresholdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="taxMin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="taxCent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="taxLump" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeePayslip">
+    <End Role="Employee" Type="Model1.Store.EmployeeSet" Multiplicity="1" />
+    <End Role="Payslip" Type="Model1.Store.PayslipSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="employeeId" />
+      </Principal>
+      <Dependent Role="Payslip">
+        <PropertyRef Name="Employee_employeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

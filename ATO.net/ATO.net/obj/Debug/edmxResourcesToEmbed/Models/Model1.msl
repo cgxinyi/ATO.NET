@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="EmployeeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Employee)">
+        <MappingFragment StoreEntitySet="EmployeeSet">
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="annualSalary" ColumnName="annualSalary" />
+          <ScalarProperty Name="superRate" ColumnName="superRate" />
+          <ScalarProperty Name="paymentMonth" ColumnName="paymentMonth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayslipSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Payslip)">
+        <MappingFragment StoreEntitySet="PayslipSet">
+          <ScalarProperty Name="payslipId" ColumnName="payslipId" />
+          <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+          <ScalarProperty Name="toDate" ColumnName="toDate" />
+          <ScalarProperty Name="incomeTax" ColumnName="incomeTax" />
+          <ScalarProperty Name="netIncome" ColumnName="netIncome" />
+          <ScalarProperty Name="superAmount" ColumnName="superAmount" />
+          <ScalarProperty Name="grossIncome" ColumnName="grossIncome" />
+          <ScalarProperty Name="Employee_employeeId" ColumnName="Employee_employeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxthresholdSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Taxthreshold)">
+        <MappingFragment StoreEntitySet="TaxthresholdSet">
+          <ScalarProperty Name="taxthresholdId" ColumnName="taxthresholdId" />
+          <ScalarProperty Name="taxMin" ColumnName="taxMin" />
+          <ScalarProperty Name="taxCent" ColumnName="taxCent" />
+          <ScalarProperty Name="taxLump" ColumnName="taxLump" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

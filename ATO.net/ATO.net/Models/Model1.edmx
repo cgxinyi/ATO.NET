@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="EmployeeSet" EntityType="Model1.Store.EmployeeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PayslipSet" EntityType="Model1.Store.PayslipSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TaxthresholdSet" EntityType="Model1.Store.TaxthresholdSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="EmployeePayslip" Association="Model1.Store.EmployeePayslip">
+      <End Role="Employee" EntitySet="EmployeeSet" />
+      <End Role="Payslip" EntitySet="PayslipSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="EmployeeSet">
+    <Key>
+      <PropertyRef Name="employeeId" />
+    </Key>
+    <Property Name="employeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="annualSalary" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="superRate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="paymentMonth" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PayslipSet">
+    <Key>
+      <PropertyRef Name="payslipId" />
+    </Key>
+    <Property Name="payslipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fromDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="toDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="incomeTax" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="netIncome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="superAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="grossIncome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_employeeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaxthresholdSet">
+    <Key>
+      <PropertyRef Name="taxthresholdId" />
+    </Key>
+    <Property Name="taxthresholdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="taxMin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="taxCent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="taxLump" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeePayslip">
+    <End Role="Employee" Type="Model1.Store.EmployeeSet" Multiplicity="1" />
+    <End Role="Payslip" Type="Model1.Store.PayslipSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="employeeId" />
+      </Principal>
+      <Dependent Role="Payslip">
+        <PropertyRef Name="Employee_employeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmployeeSet" EntityType="Model1.Employee" />
+          <EntitySet Name="PayslipSet" EntityType="Model1.Payslip" />
+          <EntitySet Name="TaxthresholdSet" EntityType="Model1.Taxthreshold" />
+          <AssociationSet Name="EmployeePayslip" Association="Model1.EmployeePayslip">
+            <End Role="Employee" EntitySet="EmployeeSet" />
+            <End Role="Payslip" EntitySet="PayslipSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employeeId" />
+          </Key>
+          <Property Name="employeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" Nullable="false" />
+          <Property Name="lastName" Type="String" Nullable="false" />
+          <Property Name="annualSalary" Type="String" Nullable="false" />
+          <Property Name="superRate" Type="String" Nullable="false" />
+          <Property Name="paymentMonth" Type="String" Nullable="false" />
+          <NavigationProperty Name="Payslip" Relationship="Model1.EmployeePayslip" FromRole="Employee" ToRole="Payslip" />
+        </EntityType>
+        <EntityType Name="Payslip">
+          <Key>
+            <PropertyRef Name="payslipId" />
+          </Key>
+          <Property Name="payslipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fromDate" Type="String" Nullable="false" />
+          <Property Name="toDate" Type="String" Nullable="false" />
+          <Property Name="incomeTax" Type="String" Nullable="false" />
+          <Property Name="netIncome" Type="String" Nullable="false" />
+          <Property Name="superAmount" Type="String" Nullable="false" />
+          <Property Name="grossIncome" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Model1.EmployeePayslip" FromRole="Payslip" ToRole="Employee" />
+          <Property Name="Employee_employeeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Taxthreshold">
+          <Key>
+            <PropertyRef Name="taxthresholdId" />
+          </Key>
+          <Property Name="taxthresholdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="taxMin" Type="String" Nullable="false" />
+          <Property Name="taxCent" Type="String" Nullable="false" />
+          <Property Name="taxLump" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="EmployeePayslip">
+          <End Type="Model1.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="Model1.Payslip" Role="Payslip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeId" />
+            </Principal>
+            <Dependent Role="Payslip">
+              <PropertyRef Name="Employee_employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="EmployeeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Employee)">
+        <MappingFragment StoreEntitySet="EmployeeSet">
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="annualSalary" ColumnName="annualSalary" />
+          <ScalarProperty Name="superRate" ColumnName="superRate" />
+          <ScalarProperty Name="paymentMonth" ColumnName="paymentMonth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayslipSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Payslip)">
+        <MappingFragment StoreEntitySet="PayslipSet">
+          <ScalarProperty Name="payslipId" ColumnName="payslipId" />
+          <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+          <ScalarProperty Name="toDate" ColumnName="toDate" />
+          <ScalarProperty Name="incomeTax" ColumnName="incomeTax" />
+          <ScalarProperty Name="netIncome" ColumnName="netIncome" />
+          <ScalarProperty Name="superAmount" ColumnName="superAmount" />
+          <ScalarProperty Name="grossIncome" ColumnName="grossIncome" />
+          <ScalarProperty Name="Employee_employeeId" ColumnName="Employee_employeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxthresholdSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Taxthreshold)">
+        <MappingFragment StoreEntitySet="TaxthresholdSet">
+          <ScalarProperty Name="taxthresholdId" ColumnName="taxthresholdId" />
+          <ScalarProperty Name="taxMin" ColumnName="taxMin" />
+          <ScalarProperty Name="taxCent" ColumnName="taxCent" />
+          <ScalarProperty Name="taxLump" ColumnName="taxLump" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EmployeeSet" EntityType="Model1.Employee" />
+    <EntitySet Name="PayslipSet" EntityType="Model1.Payslip" />
+    <EntitySet Name="TaxthresholdSet" EntityType="Model1.Taxthreshold" />
+    <AssociationSet Name="EmployeePayslip" Association="Model1.EmployeePayslip">
+      <End Role="Employee" EntitySet="EmployeeSet" />
+      <End Role="Payslip" EntitySet="PayslipSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="employeeId" />
+    </Key>
+    <Property Name="employeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" Nullable="false" />
+    <Property Name="lastName" Type="String" Nullable="false" />
+    <Property Name="annualSalary" Type="String" Nullable="false" />
+    <Property Name="superRate" Type="String" Nullable="false" />
+    <Property Name="paymentMonth" Type="String" Nullable="false" />
+    <NavigationProperty Name="Payslip" Relationship="Model1.EmployeePayslip" FromRole="Employee" ToRole="Payslip" />
+  </EntityType>
+  <EntityType Name="Payslip">
+    <Key>
+      <PropertyRef Name="payslipId" />
+    </Key>
+    <Property Name="payslipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fromDate" Type="String" Nullable="false" />
+    <Property Name="toDate" Type="String" Nullable="false" />
+    <Property Name="incomeTax" Type="String" Nullable="false" />
+    <Property Name="netIncome" Type="String" Nullable="false" />
+    <Property Name="superAmount" Type="String" Nullable="false" />
+    <Property Name="grossIncome" Type="String" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Model1.EmployeePayslip" FromRole="Payslip" ToRole="Employee" />
+    <Property Name="Employee_employeeId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Taxthreshold">
+    <Key>
+      <PropertyRef Name="taxthresholdId" />
+    </Key>
+    <Property Name="taxthresholdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="taxMin" Type="String" Nullable="false" />
+    <Property Name="taxCent" Type="String" Nullable="false" />
+    <Property Name="taxLump" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeePayslip">
+    <End Type="Model1.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Model1.Payslip" Role="Payslip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="employeeId" />
+      </Principal>
+      <Dependent Role="Payslip">
+        <PropertyRef Name="Employee_employeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
