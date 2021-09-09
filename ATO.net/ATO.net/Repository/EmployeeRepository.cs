@@ -9,7 +9,7 @@ using System.Web;
 
 namespace ATO.net.Repository
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : EmployeeRepositoryInterface
     {
 		private List<Employee> empDatabase = new List<Employee>();
 		public List<Employee> InsertEmployee(List<Employee> employee)

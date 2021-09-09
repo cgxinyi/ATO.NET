@@ -12,7 +12,7 @@ namespace ATO.net.Controllers.api
 {
     public class EmployeeController : ApiController
     {
-        private EmployeeService empService = new EmployeeService();
+        private EmployeeServiceInterface empService = new EmployeeService();
 
         [Route("api/postpayslip")]
         [System.Web.Http.HttpPost]

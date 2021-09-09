@@ -11,18 +11,19 @@ using System.Web;
 
 namespace ATO.net.Service
 {
-	public class EmployeeService
+	public class EmployeeService : EmployeeServiceInterface
 	{
 		private List<Taxthreshold> taxthresholds = new List<Taxthreshold>();
-		private EmployeeRepository employeeRepository = new EmployeeRepository();
+		private EmployeeRepositoryInterface employeeRepository = new EmployeeRepository();
+		private TaxthresholdRepositoryInterface taxthresholdRepository = new TaxthresholdRepository();
 		
 
 		public List<Taxthreshold> LoadTaxthreshold()
         {
 			Taxthreshold taxthreshold = new Taxthreshold();
-			if (taxthreshold.HasRows() == false)
+			if (taxthresholdRepository.HasRows() == false)
 			{
-				Debug.WriteLine("hihi" + taxthreshold.HasRows());
+				Debug.WriteLine("hihi" + taxthresholdRepository.HasRows());
 				using (StreamReader r = File.OpenText(@"C:\Users\cheli\Documents\GitHub\ATO.NET\ATO.net\ATO.net\TaxthresholdJson\taxthresholddata.json"))
 				{
 					string json = r.ReadToEnd();
@@ -30,13 +31,13 @@ namespace ATO.net.Service
 					for (int i = 0; i < items.Count; i++)
 					{
 						taxthresholds.Add(items[i]);
-						taxthreshold.InsertToDB(items[i]);
+						taxthresholdRepository.InsertToDB(items[i]);
 					}
 				}
 			}
 			else 
 			{
-				taxthresholds = taxthreshold.ReadTaxthresholdList();
+				taxthresholds = taxthresholdRepository.ReadTaxthresholdList();
 			}
 		
 			return taxthresholds;
@@ -45,15 +46,13 @@ namespace ATO.net.Service
 		public Double CalculateIncomeTax(Double grossIncome)
 		{
 			this.LoadTaxthreshold();
+			
 			Double incomeTax = 0;
 			for (int i = 0; i < taxthresholds.Count; i++)
 			{
-				int count = 0;
-				if (grossIncome-(taxthresholds[i].taxMin) > 0 && count==0)
+				if (grossIncome-(taxthresholds[i].taxMin) > 0 )
 				{
 					incomeTax = taxthresholds[i].taxLump + ((grossIncome - taxthresholds[i].taxMin)*taxthresholds[i].taxCent);
-					Debug.WriteLine("fdgsgf"+ taxthresholds[i].taxCent);
-					count=1;
 				}
 			}
 			return incomeTax;

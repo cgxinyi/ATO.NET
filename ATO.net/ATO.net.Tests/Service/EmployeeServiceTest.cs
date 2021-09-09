@@ -9,6 +9,7 @@ namespace ATO.net.Tests.Service
     public class EmployeeServiceTest
     {
 		private EmployeeService employeeService;
+
 		[TestInitialize]
 		public void TestInitialize()
 		{
@@ -48,5 +49,7 @@ namespace ATO.net.Tests.Service
 			Double calc = employeeService.CalculateIncomeTax(200000);
 			Assert.AreEqual(calc, 63232);
 		}
+
+
 	}
 }
