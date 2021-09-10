@@ -112,3 +112,4 @@ C:\Users\cheli\Documents\GitHub\ATO.NET\ATO.Net\ATO.net\obj\Debug\ATO.net.csproj
 C:\Users\cheli\Documents\GitHub\ATO.NET\ATO.Net\ATO.net\obj\Debug\ATO.net.csproj.CopyComplete
 C:\Users\cheli\Documents\GitHub\ATO.NET\ATO.Net\ATO.net\obj\Debug\ATO.net.dll
 C:\Users\cheli\Documents\GitHub\ATO.NET\ATO.Net\ATO.net\obj\Debug\ATO.net.pdb
+C:\Users\cheli\Documents\GitHub\ATO.NET\ATO.Net\ATO.net\obj\Debug\ATO.net.csproj.AssemblyReference.cache

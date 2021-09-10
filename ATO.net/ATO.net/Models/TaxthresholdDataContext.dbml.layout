@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TaxthresholdDataContext">
+  <DataContextMoniker Name="/TaxthresholdDataContextDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3b6ba6cf-52fb-45e6-91cc-c8d5cf413e2b" absoluteBounds="1.375, 1.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TaxthresholdDataContextDataContext/Taxthreshold" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65f1899b-2d79-4711-870a-52d1e5beb064" absoluteBounds="1.39, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

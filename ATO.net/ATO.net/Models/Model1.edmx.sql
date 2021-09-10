@@ -65,7 +65,7 @@ CREATE TABLE [dbo].[PayslipSet] (
 GO
 
 -- Creating table 'TaxthresholdSet'
-CREATE TABLE [dbo].[TaxthresholdSet] (
+CREATE TABLE [dbo].[Taxthreshold] (
     [taxthresholdId] int IDENTITY(1,1) NOT NULL,
     [taxMin] double  precision,
     [taxCent] double  precision,
@@ -90,8 +90,8 @@ ADD CONSTRAINT [PK_PayslipSet]
 GO
 
 -- Creating primary key on [taxthresholdId] in table 'TaxthresholdSet'
-ALTER TABLE [dbo].[TaxthresholdSet]
-ADD CONSTRAINT [PK_TaxthresholdSet]
+ALTER TABLE [dbo].[Taxthreshold]
+ADD CONSTRAINT [PK_Taxthreshold]
     PRIMARY KEY CLUSTERED ([taxthresholdId] ASC);
 GO
 

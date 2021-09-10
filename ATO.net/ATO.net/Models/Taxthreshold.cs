@@ -15,22 +15,34 @@ namespace ATO.net.Models
     using System.Data.SqlClient;
     using System.Diagnostics;
     using Moq;
+    using System.Linq;
+    using System.Data.Linq.Mapping;
 
-    public partial class Taxthreshold
+   
+    public partial class Taxthreshold 
     {
         private Func<IDbConnection> p;
 
-        public Taxthreshold()
-        { }
+        public static object Rows { get; internal set; }
+
+       
         public Taxthreshold(Func<IDbConnection> p)
         {
             this.p = p;
         }
 
-        public int taxthresholdId { get; set; }
-        public Double taxMin { get; set; }
-        public Double taxCent { get; set; }
-        public Double taxLump { get; set; }
+        internal static object AsEnumerable()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+        //   public int taxthresholdId { get; set; }
+        //   public Double taxMin { get; set; }
+        //   public Double taxCent { get; set; }
+        //   public Double taxLump { get; set; }
 
         public static implicit operator Taxthreshold(global::Moq.Mock<Taxthreshold> v)
         {
@@ -41,6 +53,8 @@ namespace ATO.net.Models
         {
             throw new NotImplementedException();
         }
+
+        
     }
 
    
